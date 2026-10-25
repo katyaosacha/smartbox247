@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>SmartBox 24/7 — поштомати для посилок</title>
+	<meta name="description" content="SmartBox 24/7 — зручний пошук поштоматів, перевірка вільних комірок і планування отримання та відправлення посилок у зручний час.">
+
+	
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="assets/css/theme.css" rel="stylesheet" />
+	
+	
+	
+	<style> 
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 100px;
+		}
+		#home, section {
+			background-color: #defffa !important;
+		}
+		
+		*{
+			background-image: none;
+		}
+		
+		body,
+		button,
+		input,
+		textarea,
+		select {
+			font-family: 'Nunito', sans-serif !important;
+			color: #294541 !important;
+		}
+		
+		body {
+			background-color: #fffdf8;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Nunito', sans-serif !important;
+			font-weight: 800;
+			color: #176b65 !important;
+		}
+
+		p {
+			color: #294541 !important;
+			line-height: 1.8;
+		}
+
+		.btn,
+		button,
+		input[type="submit"],
+		input[type="button"] {
+			background-color: #b8e3dc !important;
+			border: 2px solid #b8e3dc !important;
+			color: #176b65 !important;
+			border-radius: 28px !important;
+			font-family: 'Nunito', sans-serif !important;
+			font-weight: 700 !important;
+			text-decoration: none !important;
+			box-shadow: none !important;
+			transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+		}
+
+		.btn:hover,
+		button:hover,
+		input[type="submit"]:hover,
+		input[type="button"]:hover,
+		.btn:focus,
+		button:focus {
+			background-color: #176b65 !important;
+			border-color: #176b65 !important;
+			color: #ffffff !important;
+		}
+
+		.navbar-nav .nav-link {
+			color: #294541 !important;
+			text-decoration: none !important;
+			transition: color 0.25s;
+		}
+
+		.navbar-nav .nav-link:hover,
+		.navbar-nav .nav-link:focus {
+			color: #176b65 !important;
+			text-decoration: underline !important;
+			text-underline-offset: 5px;
+		}
+
+		.smartbox-card {
+			height: 100%;
+			border: 1px solid #d5eae5;
+			border-radius: 22px;
+			overflow: hidden;
+		}
+
+		.smartbox-card p {
+			text-align: justify;
+		}
+
+		.smartbox-light {
+			background-color: #e8f5f2 !important;
+			padding-top: 60px;
+			padding-bottom: 60px;
+		}
+
+		.form-control,
+		select,
+		textarea {
+			border-radius: 14px;
+		}
+
+		.form-control:focus,
+		select:focus,
+		textarea:focus {
+			border-color: #176b65 !important;
+			box-shadow: 0 0 0 3px rgba(23, 107, 101, 0.12) !important;
+		}
+		
+		.carousel-indicators .active {
+			opacity: 1;
+			background-color: #176b65 !important;
+			width: 9px;
+			height: 9px;
+		}
+		
+		.carousel-indicators [data-bs-target] {
+			background-color: #176b65 !important;
+		}
+		
+		.form-control {
+			background-color: #b8e3dca8 !important;
+		}
+		
+		.how-card { 
+			height: 100%; 
+			padding: 1.7rem; 
+			background: #fff; 
+			border: 1px solid #e2eeea; 
+			border-radius: 18px; 
+		}
+			
+		.how-number { 
+			display: inline-flex; 
+			width: 44px; 
+			height: 44px; 
+			border-radius: 50%; 
+			align-items: center; 
+			justify-content: center; 
+			background: #b8e3dca8; 
+			color: #176b65; 
+			font-weight: 800; 
+			font-size: 1.15rem; 
+			margin-bottom: 1rem; 
+		}
+	</style>
+	
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+			<h1 class="smartbox-logo">SMARTBOX 24/7</h1>
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
+              <li class="nav-item px-2 smartbox-nav"><a class="nav-link" aria-current="page" href="#home">Головна</a></li>
+              <li class="nav-item px-2 smartbox-nav"><a class="nav-link" href="#services">Послуги</a></li>
+              <li class="nav-item px-2 smartbox-nav"><a class="nav-link" href="#howitworks">Як це працює</a></li>
+			  <li class="nav-item px-2 smartbox-nav"><a class="nav-link" href="#findUs">Контакти</a></li>
+            </ul>
+            <div class="dropdown d-none d-lg-block">
+              <div class="dropdown-menu dropdown-menu-lg-end p-0 rounded" aria-labelledby="dropdownMenuButton1" style="top:55px">
+              </div>
+				<a class="btn btn-primary me-2 smartbox-btn" href="#find" role="button">Знайти поштомат</a>
+          </div>
+        </div>	
+      </nav>
+      <section class="py-xxl-10 pb-0" id="home">
+        </div>
+
+        <div class="container" >
+          <div class="row align-items-center">
+            <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100" src="assets\img\icons\швидка.посилка.png" alt="швидка доставка" /></div>
+            <div class="col-md-75 col-xl-6 col-xxl-5 text-md-start text-center py-8">
+              <h1 class="fw-normal fs-6 fs-xxl-7 fs-5" style="font-weight: 800 !important;">Розумні посилки — доступні 24/7</h1>
+              <p class="fs-1 mb-5">Забирай і надсилай посилки у зручний час. Обирай поштомат із вільними комірками та бронюй заздалегідь — без черг і зайвого очікування.<br /></p>
+			  <a class="btn btn-primary me-2 smartbox-btn" href="#find" role="button">Знайти поштомат<i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-7" id="services" container-xl="container-xl">
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5 text-center mb-3">
+              <h2>ПОСЛУГИ</h2>
+            </div>
+          </div>
+          <div class="row h-100 justify-content-center">
+            <div class="col-md-4 pt-4 px-md-2 px-lg-3">
+              <div class="card h-100 px-lg-5 card-span smartbox-card card-body">
+                <div class="d-flex flex-column justify-content-around ">
+                  <div class="text-center pt-5 "><img class="img-fluid" style="width:50%; aspect-ratio:1/1" src="assets\img\icons\часі.png" alt="..." />
+                    <h5 class="my-4">Цілодобовий доступ</h5>
+                  </div>
+                  <p>Поштомати працюють 24/7, тому отримувати й надсилати посилки можна навіть рано вранці та пізно увечері — без прив’язки до графіка відділення.</p>
+                  <div class="text-center my-5">
+                    <div class="d-grid smartbox-card-button">
+						<a class="btn btn-primary" href="#howitworks">Дізнатися більше</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 pt-4 px-md-2 px-lg-3">
+              <div class="card h-100 px-lg-5 card-span smartbox-card card-body">
+                <div class="d-flex flex-column justify-content-around">
+                  <div class="text-center pt-5"><img class="img-fluid" style="width:50%; aspect-ratio:1/1" src="assets\img\icons\лупа.png" alt="..." />
+                    <h5 class="my-4">Пошук вільної комірки</h5>
+                  </div>
+                  <p>Перевіряй розташування поштоматів і доступність комірок перед поїздкою. Обирай зручну локацію та не витрачай час на пошук вільного місця.</p>
+                  <div class="text-center my-5">
+                    <div class="d-grid">
+                              <a class="btn btn-primary" href="#howitworks">Переглянути поштомати</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 pt-4 px-md-2 px-lg-3">
+              <div class="card h-100 px-lg-5 card-span smartbox-card card-body">
+                <div class="d-flex flex-column justify-content-around">
+                  <div class="text-center pt-5"><img class="img-fluid" style="width:50%; aspect-ratio:1/1" src="assets\img\icons\календарь.png" alt="..." />
+                    <h5 class="my-4">Попереднє бронювання</h5>
+                  </div>
+                  <p>Обирай доступну комірку заздалегідь, щоб спланувати відправлення або отримання посилки у зручний час.</p>
+                  <div class="text-center my-5" style="bottom:10%">
+                    <div class="d-grid">
+                      <button class="btn btn-outline-danger smartbox-btn" type="submit">Забронювати комірку </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="pt-7 pb-0">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-6 col-lg mb-5">
+              <div class="text-center"><img style="width:50px; aspect-ratio:1/1" src="assets\img\icons\почтомат.png" alt="..." />
+                <h1 class=" mt-4">120+</h1>
+                <h5 class="text-800">Поштоматів у мережі</h5>
+              </div>
+            </div>
+            <div class="col-6 col-lg mb-5">
+              <div class="text-center"><img src="assets/img/icons/clients.png" alt="..." />
+                <h1 class="mt-4">8 500+</h1>
+                <h5 class="text-800">Задоволених користувачів</h5>
+              </div>
+            </div>	
+            <div class="col-6 col-lg mb-5">
+              <div class="text-center"><img src="assets/img/icons/goods.png" alt="..." />
+                <h1 class="mt-4">25 000+</h1>
+                <h5 class="text-800">Доставлених посилок</h5>
+              </div>
+            </div>
+            <div class="col-6 col-lg mb-5">
+              <div class="text-center"><img style="width:50px; aspect-ratio:1/1" src="assets\img\icons\часі.png" alt="..." />
+                <h1 class="mt-4">24/7</h1>
+                <h5 class="text-800">Доступ до посилок</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+	<section class="py-7" id="howitworks">
+		<div class="container">
+		  <h2 class="sb-section-title">ЯК ЦЕ ПРАЦЮЄ</h2>
+		  <p class="sb-subtitle">Кілька простих кроків — і посилка чекатиме на тебе тоді, коли зручно саме тобі.</p>
+		  <div class="row g-4">
+			<div class="col-md-6 col-lg-3"><div class="how-card"><span class="how-number">1</span><h5>Знайди поштомат</h5><p class="mb-0">Вкажи місто або адресу й обери зручне розташування на карті чи у списку.</p></div></div>
+			<div class="col-md-6 col-lg-3"><div class="how-card"><span class="how-number">2</span><h5>Перевір комірки</h5><p class="mb-0">Переглянь доступність комірок, щоб не їхати навмання та заощадити час.</p></div></div>
+			<div class="col-md-6 col-lg-3"><div class="how-card"><span class="how-number">3</span><h5>Обери або забронюй</h5><p class="mb-0">Для макета сервісу передбачено вибір доступної комірки та попереднє бронювання.</p></div></div>
+			<div class="col-md-6 col-lg-3"><div class="how-card"><span class="how-number">4</span><h5>Забери чи надішли</h5><p class="mb-0">Отримуй або відправляй посилки у зручний час — поштомати доступні 24/7.</p></div></div>
+		  </div>
+		</div>
+	</section>
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-7">
+
+        <div class="container-fluid">
+          <div class="row flex-center">
+            <!--/.bg-holder-->
+
+            <div class="col-md-8 col-lg-5 text-center">
+              <h2>ВІДГУКИ</h2>
+              <h5>Від наших дорогих клієнтів</h5>
+            </div>
+          </div>
+          <div class="carousel slide pt-6" id="carouselExampleDark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" style="background-color: #b8e3dc !important;" data-bs-interval="10000">
+                <div class="row h-100">
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Зручно, що можу забрати посилку навіть пізно ввечері після навчання. Не потрібно підлаштовуватися під графік відділення. </p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center">
+							<img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1; " src="assets\img\icons\профіль1.png" alt="" />
+                              <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Андрій, Київ</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Перед виходом завжди перевіряю, чи є вільні комірки. Це допомагає краще планувати час!!</p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star  me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль2.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Марія, Одеса</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Можливість заздалегідь обрати комірку — саме те, чого не вистачало для зручного відправлення посилок. </p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль3.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Олена, Дніпро</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <div class="row h-100">
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Зручно, що можу забрати посилку навіть пізно ввечері після навчання. Не потрібно підлаштовуватися під графік відділення. </p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль4.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Андрій, Київ</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Перед виходом завжди перевіряю, чи є вільні комірки. Це допомагає краще планувати час!!</p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star  me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль5.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Марія, Одеса</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Можливість заздалегідь обрати комірку — саме те, чого не вистачало для зручного відправлення посилок. </p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль6.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Олена, Дніпро</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row h-100">
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Зручно, що можу забрати посилку навіть пізно ввечері після навчання. Не потрібно підлаштовуватися під графік відділення. </p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль3.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Андрій, Київ</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Перед виходом завжди перевіряю, чи є вільні комірки. Це допомагає краще планувати час!!</p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star  me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль4.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Марія, Одеса</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 card-span p-3">
+                      <div class="card-body">
+                        <h5 class="mb-0">Чудовий сервіс!</h5>
+                        <p class="card-text pt-3">Можливість заздалегідь обрати комірку — саме те, чого не вистачало для зручного відправлення посилок. </p>
+                        <div class="d-xl-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center mb-3"><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i><i class="fas fa-star me-1"></i></div>
+                          <div class="d-flex align-items-center"><img class="img-fluid" style="border-radius:50%; width:20%; aspect-ratio:1/1" src="assets\img\icons\профіль5.png" alt="" />
+                            <div class="flex-1 ms-3">
+                              <h6 class="mb-0 fs--1 text-1000 fw-medium">Олена, Дніпро</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row px-3 px-md-0 mt-6">
+              <div class="col-12 position-relative">
+                <ol class="carousel-indicators">
+                  <li class="active" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"></li>
+                  <li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
+                  <li data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+
+        <div class="container" id="find">
+          <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+			 <h4>Знайди поштомат поруч</h4>
+              <p>Введи місто або адресу, щоб переглянути доступні поштомати.</p>
+			<img style="width:200px; aspect-ratio:1/1; border-radius:10%" src="assets\img\icons\поштомат.png" alt="..." />
+            </div>
+			<div class="col-lg-7">
+                <form id="lockerSearchForm" class="row g-3">
+                  <div class="col-md-8"><label class="visually-hidden" for="lockerLocation">Місто або адреса</label><input class="form-control" id="lockerLocation" type="search" placeholder="Наприклад, Одеса, вул. Дерибасівська" required></div>
+                  <div class="col-md-4 d-grid"><button class="btn btn-primary smartbox-btn" type="submit">Показати поштомати</button></div>
+                </form>
+                <div id="lockerResults" aria-live="polite"></div>
+				<div class="col-12 mt-4">
+				  <div style="border-radius: 18px; overflow: hidden; border: 1px solid #d5e8e3;">
+					<iframe
+					  id="lockerMap"
+					  src="https://maps.google.com/maps?q=поштомати%20Одеса&t=&z=12&ie=UTF8&iwloc=&output=embed"
+					  width="100%"
+					  height="420"
+					  style="border: 0; display: block;"
+					  loading="lazy"
+					  title="Карта поштоматів SmartBox 24/7"
+					  allowfullscreen>
+					</iframe>
+				  </div>
+				  <p class="text-center mt-3">
+					<small>Знайди зручне розташування поштоматів на карті.</small>
+				  </p>
+				</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+
+<!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section id="findUs" class="py-7">
+        <div class="container">
+          <div class="text-center mb-5">
+            <h2 class="sb-section-title">Маєш запитання? Ми на зв’язку!</h2>
+            <p class="sb-subtitle mb-0">Напиши нам, якщо потрібна допомога з пошуком поштомата, отриманням посилки або роботою сервісу.</p>
+          </div>
+          <div class="row g-4 contact-layout">
+            <div class="col-lg-7">
+              <div class="contact-panel">
+                <h4 class="mb-4">Напиши нам</h4>
+                <form id="contactForm" class="row g-3" style="background-color: white; border-radius: 20px; padding: 15px;">
+                  <div class="col-md-6"><label class="form-label" for="contactName">Твоє ім’я</label><input class="form-control" id="contactName" type="text" placeholder="Як до тебе звертатися?" required></div>
+                  <div class="col-md-6"><label class="form-label" for="contactEmail">Електронна пошта</label><input class="form-control" id="contactEmail" type="email" placeholder="name@example.com" required></div>
+                  <div class="col-12"><label class="form-label" for="contactMessage">Повідомлення</label><textarea class="form-control" id="contactMessage" rows="5" placeholder="Напиши своє запитання..." required></textarea></div>
+                  <div class="col-12 d-grid d-sm-flex"><button class="btn btn-primary smartbox-btn" type="submit">Надіслати повідомлення <i class="fas fa-paper-plane ms-2"></i></button></div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="contact-panel">
+                <h4 class="mb-4">Наші контакти</h4>
+                <p><i class="fas fa-phone-alt contact-icon me-2" style="color: #176b65 !important;"></i>+380 800 000 247</p>
+                <p><i class="fas fa-envelope contact-icon me-2" style="color: #176b65 !important;"></i>support@smartbox24.7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+     
+
+
+
+
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-0 bg-1000">
+
+        <div class="container">
+          <div class="row justify-content-md-between justify-content-evenly py-4">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
+              <p class="fs--1 my-2 fw-bold text-200">© 2026 Увага! Цей веб-сайт є навчальним проєктом, створеним виключно з освітньою метою в межах навчального курсу. Сайт не здійснює комерційної діяльності, не надає платних послуг і не призначений для отримання прибутку.
+Зробила сайт: Осача Катерина</p>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	  const searchForm = document.getElementById("lockerSearchForm");
+	  const locationInput = document.getElementById("lockerLocation");
+	  const map = document.getElementById("lockerMap");
+	  const results = document.getElementById("lockerResults");
+
+	  if (!searchForm || !locationInput || !map) {
+		console.error("Не знайдено форму пошуку, поле адреси або карту.");
+		return;
+	  }
+
+	  searchForm.addEventListener("submit", function (event) {
+		event.preventDefault();
+
+		const location = locationInput.value.trim();
+
+		if (!location) {
+		  results.textContent = "Введи місто або адресу для пошуку.";
+		  return;
+		}
+
+		const query = "поштомати " + location;
+
+		map.src =
+		  "https://maps.google.com/maps?q=" +
+		  encodeURIComponent(query) +
+		  "&z=14&output=embed";
+
+		results.textContent =
+		  "На карті показано результати Google Maps для запиту: " + query;
+	  });
+	});
+	</script>
+	
+</body>
+</html>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  </body>
+
+</html>
